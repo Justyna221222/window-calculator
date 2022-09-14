@@ -8,9 +8,9 @@
     </template>
 </error-message>
 
-    <div class="header">
-        <p > Wprowadź rodzaj okleiny.</p>
-    </div>
+<div class="header">
+     <p> Wprowadź rodzaj okleiny.</p>
+</div>
      
 <div class="choose">
     <div>
@@ -183,5 +183,51 @@ button:hover,
 button:active {
   background-color: #690f0f;
   border-color: #270041;
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .header {
+        margin: 20px 0 20px;
+    }
+    img {
+        width: 150px;
+        height: 150px;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin:0 20px 20px 0;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;  
+        margin:0 0 20px 20px;              
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+    }
 }
 </style>

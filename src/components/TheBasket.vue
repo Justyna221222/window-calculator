@@ -58,6 +58,7 @@
 <style scoped>
 .summary {
     font-size: 16px;
+    margin: 20px;
 }
 table {
     border: 1px solid black;
@@ -103,5 +104,25 @@ button:hover,
 button:active {
   background-color: #690f0f;
   border-color: #270041;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+
+    .summary {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .summary {
+        display: none;
+    }    
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+    .summary {
+        display: none;
+    }    
 }
 </style>

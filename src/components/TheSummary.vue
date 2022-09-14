@@ -278,6 +278,7 @@ setTimeout(() => {
 <style scoped>
 .summary {
     font-size: 16px;
+    margin: 20px;
 }
 table {
     border: 1px solid black;
@@ -303,6 +304,9 @@ table {
     font-size: 18px;
     font-weight: bold;
 }
+input {
+    margin: 0 0 20px 0;
+}
 .buttons {
     display: flex;
     flex-direction: row;
@@ -327,5 +331,81 @@ button:active {
 }
 .warning {
     color: red;
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .header {
+        margin: 20px 0;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin:20px 20px 20px 0;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;  
+        margin:20px 0 20px 20px;              
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
+    button {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        margin: 3px 0;
+        font-family: inherit;
+        background-color: #cb2c2c;
+        border: 1px solid #3a0061;
+        color: white;
+        cursor: pointer;
+        }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 20px 0 20px 20px;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .next {
+        margin: 20px 20px 20px 0;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
+    button {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        margin: 3px 0;
+        font-family: inherit;
+        background-color: #cb2c2c;
+        border: 1px solid #3a0061;
+        color: white;
+        cursor: pointer;
+        }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+    }
 }
 </style>

@@ -13,7 +13,7 @@
     <div class="choose">
         <div class="narrow">
             <div class="brak">
-                <div class="noFrame">
+                <div class="noBlind">
                  <input type="radio" id="brak" value="brak" name ="winBlind" v-model="windowBlind">
                  <label for="brak">Wybieram okno bez rolety.</label>    
                 </div>   
@@ -109,13 +109,22 @@ p {
     text-align: center;
     padding: 0 15px;
 }
-.noFrame {
+.noBlind {
     display: flex;
     flex-direction: row;
     padding:0;
-    margin: 10px 0;
+    margin: 15px 15px;
     justify-content: center;
     align-items: center;
+}
+.noBlind input {
+    margin: 0 10px;
+}
+.narrow input {
+    margin: 0 10px;
+}
+.narrow {
+    margin: 18px;
 }
 .blindItem {
     display: flex;
@@ -168,13 +177,13 @@ input {
     float: left;
     padding: 10px 50px;
     display: inline-block;
-    margin-left: 20px;
+    margin:20px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
-    margin-right: 20px;
+    margin: 20px;
 }
 .header {
     font-size: 20px;
@@ -197,5 +206,66 @@ button:hover,
 button:active {
   background-color: #690f0f;
   border-color: #270041;
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .header {
+        margin: 20px 0;
+    }
+    .choose {
+        flex-direction: column;
+        width: 100vw;
+        margin:0;
+        padding: 0;
+    }
+    .chooseItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin:20px 20px 20px 0;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;  
+        margin:20px 0 20px 20px;              
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .chooseItems {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .previous {
+        margin: 20px 0 20px 20px;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .next {
+        margin: 20px 20px 20px 0;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+    }
 }
 </style>

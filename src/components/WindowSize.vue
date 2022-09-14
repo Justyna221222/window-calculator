@@ -18,30 +18,31 @@
         <button @click="confrimErrorSize">Ok</button>
     </template>
 </error-message>
- <div>
+ <div class="container">
     <div class="header">
         <p> Wprowadź wysokość i szerokość okna w mm.</p>
     </div>
-     
-    <div :class="{invalid:widthValidity === 'invalid'}">
-        <label to='winWidth'>Width</label>
-        <input type='text' id='winWidth' v-model.trim="winWidth" @blur="validateWidth">
-        <p v-if="widthValidity === 'invalid'">Wprowadź szerokość okna w mm</p>
-    </div>
-    <div class="imgAndHeight">
-    <img :src='source' alt="window" width="434" height="295">
+    <div class="winImgInputs">
+        <div :class="{invalid:widthValidity === 'invalid'}" class="WinWidth">
+            <label to='winWidth'>Width</label>
+            <input type='text' id='winWidth' v-model.trim="winWidth" @blur="validateWidth" size='10'>
+            <p v-if="widthValidity === 'invalid'">Wprowadź szerokość okna w mm</p>
+        </div>
+     <div class="imgAndHeight">
+        <img :src='source' alt="window">
         <div :class="{invalid:heightValidity === 'invalid'}">        
             <label to='winHeight'>Height</label>
-            <input type='text' id='winHeight' v-model.trim="winHeight" @blur="validateHeight">
+            <input type='text' id='winHeight' v-model.trim="winHeight" @blur="validateHeight" size='10'>
             <p v-if="heightValidity === 'invalid'">Wprowadź wysokość okna w mm</p>      
         </div>
     </div>
-</div>
+    </div>
     <div>Cena okna: {{ winSizePrice }}</div>
-    <div>
+    <div class='nextAndPrevious'>
         <button @click="navigateToWinType" type="button" class="previous">Poprzedni</button>
         <button @click="setWinSize" type="button" class="next">Następny</button>
-    </div>   
+    </div>  
+</div> 
 </template>
 
 <script>
@@ -239,26 +240,32 @@
     }
 </script>
 
-<style>
-div {
-    padding: 20px;
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
 }
+.winImgInputs {
+    margin: 30px 0 20px 0;
+}
+
 p {
-    color: #5E5B58;
+    color: black;
 }
 label {
     padding: 10px;
 }
+.nextAndPrevious {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .next {
-    float: right;
     padding: 10px 50px;
-    display: inline-block;
-    margin-right: 20px;
+    margin-right: 100px;
 }
 .previous {
-    float: left;
     padding: 10px 50px;
-    display: inline-block;
     margin-left: 20px;
 }
 .header {
@@ -267,6 +274,7 @@ label {
     text-align: center;
     background-color: #f3e0d1;
     margin: 0;
+    color: black;
 }
 div.invalid input {
     border: 1px solid red;
@@ -278,6 +286,10 @@ div.invalid label {
     display:flex;
     flex-direction: row;
     align-items: center;
+}
+img {
+    width: "434px";
+    height: "295px";
 }
 button {
   padding: 0.75rem 1.5rem;
@@ -292,6 +304,44 @@ button:hover,
 button:active {
   background-color: #690f0f;
   border-color: #270041;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    * {
+    margin: 0;
+    padding: 0;
+}
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: space-around;
+        height: 100vw;
+    }
+   .imgAndHeight img {
+        width: 180px;
+        height: 122px;
+    }
+    .imgAndHeight label{
+       margin: 0;
+       padding: 0; 
+    }
+    .header p{
+        margin: 15px 0 5px 0;
+        font-size: 17px;
+        padding: 0;
+        width: 100%;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin-right: 20px;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;                
+    }
+
+
 }
 
 </style>

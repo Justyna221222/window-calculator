@@ -136,7 +136,7 @@
             </label>   
         </div>
     </div>
-    <div>
+    <div class="nextButtonFrame">
         <button @click="setWinType" type="button" class="next">Następny</button>
     </div> 
     <div class="woodenWindows">
@@ -160,7 +160,7 @@
             </div>
             <p class="small">To nie jest zapis na newsletter. Nie będziemy przysyłać Ci żadnych seryjnych wiadomości.</p>    
             <div>
-                <button @click="sendEmail">Wyślij cennik</button>
+                <button class="buttonSendEmail" @click="sendEmail">Wyślij cennik</button>
             </div>
             <div v-if="emailSend" class="emailSend">
                 <p>Wiadomość została wysłana, dziękujemy!</p>
@@ -222,9 +222,14 @@ import emailjs from '@emailjs/browser';
 </script>
 
 <style scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
+
  .choose {
     display: grid;
-  grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto;
 
  }
  .choose::after {
@@ -239,6 +244,7 @@ import emailjs from '@emailjs/browser';
  .next {
      float: right;
      padding: 10px 50px;
+     margin: 20px 20px;
  }
  [type=radio] { 
   position: absolute;
@@ -261,7 +267,7 @@ import emailjs from '@emailjs/browser';
     padding: 5px;
     text-align: center;
     background-color: #f3e0d1;
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
 }
 .header1 {
@@ -269,7 +275,7 @@ import emailjs from '@emailjs/browser';
     padding: 5px;
     text-align: center;
     background-color: #E6E6E6;
-    margin: 0;
+    margin: 10px 0;
     padding: 0;    
 }
 .description {
@@ -278,6 +284,7 @@ import emailjs from '@emailjs/browser';
     font-family: 'Merienda', cursive;
     font-family: 'Montserrat', sans-serif;
     color: #5E5B58;
+    margin: 10px 0;
 }
 .description1 {
     font-size: 16px;
@@ -324,16 +331,18 @@ button:active {
   background-color: #edd2ff;
 }
 .woodenWindows {
-    margin: 50px 0;
+    margin: 50px 20px;
+    clear: both;
 }
 .woodenWindows h5 {
-    margin: 30px 0;
+    margin: 30px 20px;
 }
 .woodenWindows [type=checkbox] + label {
     cursor: pointer;
 }
 .woodenWindows h4 {
     background-color: #f3e0d1;
+    font-size: 18px;
     padding: 15px;
 }
 .email {
@@ -346,5 +355,101 @@ button:active {
     color: green;
     font-size: 18px;
     font-weight: bold;
+}
+.buttonSendEmail {
+    margin: 20px 0;
+}
+
+form input {
+    margin: 5px 10px;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .choose {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    }
+    .listItem {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    }
+    .woodenWindows h4 {
+    font-size: 18px;
+    padding: 10px;
+    }
+    .woodenWindows h5 {
+    font-size: 18px;
+    }
+    .next {
+     padding: 10px 50px;
+ }
+ .nextButtonFrame {
+    display: flex;
+    justify-content: center;
+ }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .choose {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    }
+    .listItem {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    }
+    .woodenWindows h4 {
+    font-size: 18px;
+    padding: 10px;
+    }
+    .woodenWindows h5 {
+    font-size: 18px;
+    }  
+    .next {
+     padding: 10px 50px;
+    } 
+     .nextButtonFrame {
+    display: flex;
+    justify-content: center;
+ }
+    input {
+        margin: 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+    .choose {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    }
+    .listItem {
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    }
+    .woodenWindows h4 {
+    font-size: 18px;
+    padding: 10px;
+    }
+    .woodenWindows h5 {
+    font-size: 18px;
+    } 
+    .next {
+     float: right;
+     display: block;
+     padding: 10px 50px;
+ }
+ .woodenWindows {
+    clear:both;
+}
 }
 </style>

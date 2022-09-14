@@ -139,19 +139,16 @@ p {
     font-size: 18px;
     margin: 0 15px;
 }
-.frame {
-    text-align: center;
-}
 .choose {
      display: flex;
      flex-direction: row;
      flex-flow: row wrap;
      justify-content: center;
  }
-
 .brakRamki {
     display: flex;
     flex-direction: column;
+    margin: 20px 0;
 }
 .noFrame {
     display: flex;
@@ -217,5 +214,54 @@ button:hover,
 button:active {
   background-color: #690f0f;
   border-color: #270041;
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .header {
+        margin: 20px 0 20px;
+    }
+    .noFrame {
+        margin: 20px auto auto auto;
+    }
+    img {
+        width: 150px;
+        height: 150px;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin:0 20px 20px 0;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;  
+        margin:0 0 20px 20px;              
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+    }
 }
 </style>

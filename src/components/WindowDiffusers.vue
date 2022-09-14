@@ -285,7 +285,7 @@
 
 p {
     font-size: 18px;
-    margin: 10px;
+    margin: 10px 0;
 }
 #brakp {
     font-size: 19px;
@@ -325,12 +325,12 @@ h3 {
     display: flex;
     flex-direction: row;
     padding:0;
-    margin: 10px 0;
+    margin: 10px 10px;
     justify-content: center;
     align-items: center;
 }
 .noMuntin p {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
   [type=radio] { 
@@ -357,22 +357,10 @@ h3 {
     padding: 0;
     margin: 0;
 }
-/* IMAGE STYLES 
-[type=radio] + img {
-  cursor: pointer;
+.listItem label {
+    display: block;
+    overflow: wrap;
 }
-[type=radio] + p {
-    cursor: pointer;
-}*/
-
-/* CHECKED STYLES 
-[type=radio]:checked + img {
-  outline: 2px solid red;
-}
-
-[type=radio]:checked + p {
-  outline: 2px solid red;
-}*/
 .previous {
     float: left;
     padding: 10px 50px;
@@ -387,11 +375,9 @@ h3 {
 }
 .header {
     font-size: 20px;
-    padding: 5px;
     text-align: center;
     background-color: #f3e0d1;
     margin: 0;
-    padding: 0;
 }
 hr {
      border: 1px solid #690f0f;
@@ -403,6 +389,7 @@ button {
   border: 1px solid #3a0061;
   color: white;
   cursor: pointer;
+  margin: 20px 0;
 }
 
 button:hover,
@@ -411,7 +398,73 @@ button:active {
   border-color: #270041;
 }
 .brookvent {
-    padding: 3px;
+    padding: 15px;
     background-color: #f3e0d1;
+}
+@media only screen and (min-width: 0px) and (max-width: 576px) {
+    .header {
+        margin: 20px 0;
+    }
+    .choose {
+        flex-direction: column;
+        width: 100vw;
+        margin:0;
+        padding: 0;
+    }
+    img {
+        width: 300px;
+        height: 106px;
+    }
+    .diffuserBrand {
+        margin: 10px 0;
+    }
+    h3 {
+        width: 100%;
+    }
+    .diffuserList {
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+    }
+    .next {
+        padding: 5px 20px;
+        font-size: 14px;
+        margin:0 20px 20px 0;
+    }
+    .previous {
+        padding: 5px 20px;
+        font-size: 14px;  
+        margin:0 0 20px 20px;              
+    }
+    .brookvent {
+        text-align: justify;
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .header {
+        margin: 20px 0 20px 0;
+    }
+    .previous {
+        margin: 0 0 20px 20px;
+    }
+    .next {
+        margin: 0 20px 20px 0;
+    }
 }
 </style>

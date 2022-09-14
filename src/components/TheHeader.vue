@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
  }
 /*.button {
@@ -57,14 +57,16 @@
     min-width: 100px;
 }*/
 .button {
-  padding: 1.2rem 2.2rem;
-  margin: 0;
-  font-family: inherit;
-  background-color: #690f0f;
-  border: 1px solid #690f0f;
-  color: white;
-  cursor: pointer;
-  text-decoration: none;
+    display: inline-block;
+    padding: 1.2rem 2.2rem;
+    margin: 0;
+    font-family: inherit;
+    background-color: #690f0f;
+    border: 1px solid #690f0f;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;    
 }
 
 .button:hover,
@@ -95,5 +97,29 @@ a.router-link-active {
 .highlighted {
     background-color: blue;
 }
-    
+
+@media all and (max-width: 576px) {
+    .buttons {
+        display: none;
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 922px) {
+    .buttons {
+        display: none;
+    }    
+}
+@media only screen and (min-width: 922px) and (max-width: 1200px) {
+.button {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    font-family: inherit;
+    background-color: #690f0f;
+    border: 1px solid #690f0f;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    white-space: nowrap;
+}
+}
 </style>

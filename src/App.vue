@@ -55,6 +55,20 @@ p {
     animation: slide-scale 0.4s ease-in; 
 }
 
+
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
+    body {
+        width:100%;
+    }
+    .container1 {
+        margin:0;
+        padding:0;
+        display: block;
+        width: 100%;
+    }
+
+}
+
 @keyframes slide-scale {
     0% {
         transform: translateX(0) scale(1);
@@ -65,5 +79,8 @@ p {
     100% {
         transform: translateX(-150px) scale(1);
     }
+
 }
+
+
 </style>
