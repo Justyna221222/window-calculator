@@ -1,39 +1,38 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj szyby</p>
+        <p>Enter the type of glass</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
     <div class="header">
-        <p> Wprowadź typ szyby</p>
+        <p> Enter the type of glass</p>
     </div>
     <div class="choose">
-    <div v-if="glassAccepted">
+    <div v-if="glassAccepted" class="glassItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="jednokomorowe" value="jednokomorowe" v-model="windowGlass">
+            <input type="radio" id="jednokomorowe" value="single-chamber" v-model="windowGlass">
             <img src='/images/glass2.jpg' alt="window glass" width="256" height="256">
-            <p> Jednokomorowe</p>
+            <p> Single-chamber</p>
         </label>
     </div>
-    <div>
+    <div class="glassItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="dwukomorowe" value="dwukomorowe" v-model="windowGlass">
+            <input type="radio" id="dwukomorowe" value="two-chamber" v-model="windowGlass">
             <img src='/images/glass3.jpg' alt="window glass" width="256" height="256">
-            <p> Dwukomorowe</p>
+            <p> Two-chamber </p>
         </label>
     </div>
 
 </div>
-<div v-if="!glassAccepted">
-    <p>Profil {{ this.$store.state.winProfile }} jest dostępny wyłącznie z pakietem dwukomorowym</p>
+<div v-if="!glassAccepted" class="onlyTwoChamber">
+    <p>Profile <strong>{{ this.$store.state.winProfile }}</strong> it is only available with the two-chamber package</p>
 </div>
-<div>Cena okna z okleiną: {{ this.$store.state.winVennerPrice }}</div>
 <div>
-    <button @click="navigateToWinVenner" type="button" class="previous">Poprzedni</button>
-    <button @click="setGlass" type="button" class="next">Następny</button>
+    <button @click="navigateToWinVenner" type="button" class="previous">Previous</button>
+    <button @click="setGlass" type="button" class="next">Next</button>
 </div>
 </template>
 
@@ -66,10 +65,10 @@
                 if(winGlass == '') {
                     this.inputIsInvalid = true;
                     return;
-                } else if(winGlass == 'jednokomorowe') {
+                } else if(winGlass == 'single-chamber') {
                     const winGlassPrice = winVennerPrice;
                     this.$store.commit('setWinGlassPrice', winGlassPrice);
-                } else if(winGlass == 'dwukomorowe') {
+                } else if(winGlass == 'two-chamber') {
                     const winGlassPrice = Math.round(winVennerPrice + (140 * winArea)) * 100 / 100;
                     this.$store.commit('setWinGlassPrice', winGlassPrice);
                 } else {
@@ -110,6 +109,9 @@ label {
     flex-direction: column;
     align-items: center;
 }
+.glassItem {
+    margin: 5px;
+}
 
   [type=radio] { 
   position: absolute;
@@ -132,12 +134,14 @@ label {
     padding: 10px 50px;
     display: inline-block;
     margin-left: 20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin-right: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -146,6 +150,20 @@ label {
     background-color: #f3e0d1;
     margin: 0;
     padding: 0;
+}
+.onlyTwoChamber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    margin: 0 0 30px 0;
+}
+.onlyTwoChamber p {
+    display: block;
+    width: 100%;
+    color: darkred;
+    background-color: #E6E6E6;
+    padding: 10px 20px;
 }
 button {
   padding: 0.75rem 1.5rem;
@@ -173,11 +191,13 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:0 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:0 0 20px 20px;              
+        margin:0 0 20px 20px;
+        width: 120px;              
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

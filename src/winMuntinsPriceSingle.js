@@ -2,30 +2,30 @@ export function winMuntinsPriceSingle(winMuntins, winType, winWidth, winHeight, 
     //return 9 + winMuntins + winType;
     var muntinArea = 0;
     var muntinLength = 0;
-    if(winType == "fix w ramie" || winType == "rozwierne" || winType == "Uchylne" || winType == "Rozwierno-uchylne") {
+    if(winType == "Fixed in the frame" || winType == "Side-hung" || winType == "Tilt" || winType == "Tilt&turn") {
         muntinArea = 4;
         muntinLength = winWidth + winHeight;
-    } else if(winType == "Rozwierne + rozwierno-uchylne" || winType == "Rozweirno-uchylne + FIX" || winType == "Stałe FIX + FIX" || winType == 'Uchylne + rozwierno-uchylne') {
+    } else if(winType == "Side-hung + tilt&turn" || winType == "Tilt&turn + FIX" || winType == "FIX + FIX" || winType == 'Tilt + tilt&turn') {
         muntinArea = 8;
         muntinLength = winWidth + (2 * winHeight);
-    } else if(winType == "Rozwierne + rozwierne + rozwierno-uchylne" || winType == "Stałe FIX + FIX + FIX") {
+    } else if(winType == "Side-hung + Side-hung + tilt&turn" || winType == "FIX + FIX + FIX") {
         muntinArea = 12;
         muntinLength = winWidth + (3 * winHeight);
-    } else if(winType == "Rozwierne + rozwierno-uchylne x 2") {
+    } else if(winType == "Side-hung + tilt&turn x 2") {
         muntinArea = 16;
         muntinLength = winWidth + (3 * winHeight);
     } else {
        muntinArea = 0;
     }
-    if(winMuntins == 'biała 26mm') {
+    if(winMuntins == 'white 26mm') {
         var meterPrice = 46;
-    } else if(winMuntins == 'drewnopodobna 26mm') {
+    } else if(winMuntins == 'in the color of wood 26mm') {
         meterPrice = 69;
-    } else if(winMuntins == 'biała 45mm') {
+    } else if(winMuntins == 'white 45mm') {
         meterPrice = 65;
-    } else if(winMuntins == 'drewnopodobna 45mm') {
+    } else if(winMuntins == 'in the color of wood 45mm') {
         meterPrice = 88;
-    } else if(winMuntins == 'brak') {
+    } else if(winMuntins == 'empty') {
         meterPrice = 0;
         muntinArea = 0;
     } else {

@@ -1,15 +1,15 @@
 export function winFramesPriceSingle(area, winFrames, winGlassPrice) {
 
-    if(winFrames == "czarna") {
+    if(winFrames == "black") {
         const winFramesPrice = winGlassPrice + (area * 15);
         return winFramesPrice;
-    } else if(winFrames == "szara" || winFrames == "ciemny brąz" || winFrames == "jasny brąz"){
+    } else if(winFrames == "gray" || winFrames == "dark brown" || winFrames == "light brown"){
         const winFramesPrice = winGlassPrice + (area * 22);
         return winFramesPrice;
-    } else if(winFrames == "biała") {
+    } else if(winFrames == "white") {
         const winFramesPrice = winGlassPrice + (area * 40);
         return winFramesPrice;
-    } else if(winFrames == "brak") {
+    } else if(winFrames == "empty") {
     const winFramesPrice = winGlassPrice;
     return winFramesPrice;    
     } else {

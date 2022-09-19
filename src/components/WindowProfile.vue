@@ -1,52 +1,52 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj profilu okiennego</p>
+        <p>Enter the type of window profile</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
     <div class="header">
-        <p> Wprowadź rodzaj profilu okiennego</p>
+        <p> Enter the type of window profile</p>
     </div>
     <div class="choose">
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="sonarolClassic" value="sonarol classictherm" v-model="windowProfile">
             <img src='/images/Sonarolclasictherm.png' alt="window profile" width="250" height="250">
             <p>Sonarol Classictherm</p>
         </label>
     </div>
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="schuco" value="schuco" v-model="windowProfile">
             <img src='/images/schucoliving.png' alt="window profile" width="250" height="250">
             <p>Schuco Living</p>
         </label>
     </div>
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="sonarol" value="sonarol" v-model="windowProfile">
             <img src='/images/sonarolperfectherm.png' alt="window profile" width="250" height="250">
             <p>Sonarol Perfektherm</p>
         </label>
     </div>
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="veka" value="veka" v-model="windowProfile">
             <img src='/images/veka82.png' alt="window profile" width="250" height="250">
             <p>Veka 82</p>
         </label>
     </div>
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="aluplast4000" value="aluplast 4000" v-model="windowProfile">
             <img src='/images/Aluplast4000.png' alt="window profile" width="250" height="250">
             <p>Aluplast 4000</p>
         </label>
     </div>
-    <div>
+    <div class="profileItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
             <input type="radio" id="aluplast" value="aluplast" v-model="windowProfile">
             <img src='/images/aluplast8000.png' alt="window profile" width="250" height="250">
@@ -54,13 +54,10 @@
         </label>
     </div>
 </div>
-<div>Cena okna z rozmiarem: {{ this.$store.state.winSizePrice }}</div>
 <div>
-    <button @click="navigateToWinSize" type="button" class="previous">Poprzedni</button>
-    <button @click="setProfile" type="button" class="next">Następny</button>
+    <button @click="navigateToWinSize" type="button" class="previous">Previous</button>
+    <button @click="setProfile" type="button" class="next">Next</button>
 </div>
-<div>{{ this.$store.state.winProfilePrice }}</div>
-<div>{{ this.$store.state.winProfile }}</div>
 </template>
 
 <script>
@@ -117,7 +114,7 @@
                 const winHeight = store.state.height;
                 const winType = store.state.winType;
                 //next(winHeight !== '' || winType !== 'Drzwi PSK + FIX');
-                next(winType !== 'Drzwi PSK + FIX' && winType !== 'Drzwi PSK + FIX Perfectherm' && winType !== 'Drzwi HS'&& winType !=='' && winType !== 'Drzwi jednoskrzydłowe 1' && winType !== 'Drzwi jednoskrzydłowe 2' && winType !== 'Drzwi dwuskrzydłowe PVC' && winHeight !=='');
+                next(winType !== 'Door PSK + FIX' && winType !== 'Door PSK + FIX Perfectherm' && winType !== 'Door HS'&& winType !=='' && winType !== 'Single-leaf door PVC 1' && winType !== 'Single-leaf door PVC 2' && winType !== 'Double-leaf door PVC' && winHeight !=='');
             }
     };
 </script>
@@ -133,6 +130,9 @@
 .choose p {
     color: black;
     padding: 15px 0 0 0;
+}
+.profileItem {
+    margin: 5px;
 }
 label {
     display: flex;
@@ -161,12 +161,14 @@ label {
     padding: 10px 50px;
     display: inline-block;
     margin: 20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -202,11 +204,13 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:0 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:0 0 20px 20px;              
+        margin:0 0 20px 20px;
+        width: 120px;              
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

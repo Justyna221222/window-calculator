@@ -1,7 +1,7 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj okleiny</p>
+        <p>Enter the type of veneer.</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
@@ -9,33 +9,31 @@
 </error-message>
 
 <div class="header">
-     <p> Wprowadź rodzaj okleiny.</p>
+     <p> Enter the type of veneer.</p>
 </div>
      
 <div class="choose">
-    <div>
+    <div class="vennerItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="type1" value="jednostronna" v-model="winVenner">
+            <input type="radio" id="type1" value="one-sided" v-model="winVenner">
             <img src='/images/jednostronna.jpg' alt="window glass" width="256" height="256">
-            <p> Okleina jednostronna</p>
-            <p class="small"> Strona zewnętrzna - kolor, strona wewnętrzna - biała</p>
+            <p> One-sided veneer</p>
+            <p class="small"> Outer side - color, inner side - white</p>
         </label>   
     </div>
-    <div>
+    <div class="vennerItem">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="type2" value="dwustronna" v-model="winVenner">
+            <input type="radio" id="type2" value="two-sided" v-model="winVenner">
             <img src='/images/dwustronna.jpg' alt="window glass" width="256" height="256">
-            <p> Okleina dwustronna</p>
-            <p class="small"> Strona zewnętrzna i wewnętrzna w kolorze</p>
+            <p> Two-sided veneer</p>
+            <p class="small"> Outer side and inner side in color</p>
         </label>
     </div>
 </div>
 
-    <div>Cena okna na podstawie profili: {{ this.$store.state.winProfilePrice }}</div>
-    <div>Okleina: {{ winVenner }} </div>
     <div>
-        <button @click="navigateToWinProfile" type="button" class="previous">Poprzedni</button>
-        <button @click="setWinVenner" type="button" class="next">Następny</button>
+        <button @click="navigateToWinProfile" type="button" class="previous">Previous</button>
+        <button @click="setWinVenner" type="button" class="next">Next</button>
     </div>   
 </template>
 
@@ -58,7 +56,7 @@
                 const winType = this.$store.state.winType;
                 const wWidth = this.$store.state.width;
                 const wHeight = this.$store.state.height;
-                if(winType == 'Drzwi PSK + FIX' || winType == 'Drzwi PSK + FIX Perfectherm') {
+                if(winType == 'Door PSK + FIX' || winType == 'Door PSK + FIX Perfectherm') {
                     winProfilePrice = winSizePrice;
                 } else {
                     winProfilePrice = this.$store.state.winProfilePrice;
@@ -66,23 +64,23 @@
                 if(windowVenner == '') {
                     this.inputIsInvalid = true;
                     return;
-                } else if(winType == 'Drzwi HS' && windowVenner == 'jednostronna') {
+                } else if(winType == 'Door HS' && windowVenner == 'one-sided') {
                     const winVennerPrice = winSizePrice;
                     this.$store.commit('setWinVennerPrice', winVennerPrice);
-                } else if(winType == 'Drzwi HS' && windowVenner == 'dwustronna') {
+                } else if(winType == 'Door HS' && windowVenner == 'two-sided') {
                     const winVennerPrice = winPriceHSDoubleColor(wWidth, wHeight);
                     this.$store.commit('setWinVennerPrice', winVennerPrice);                
-                } else if(windowVenner == 'jednostronna') {
+                } else if(windowVenner == 'one-sided') {
                     const winVennerPrice = (Math.round((winSizePrice * 0.25) * 100) / 100) + winProfilePrice;
                     this.$store.commit('setWinVennerPrice', winVennerPrice);
-                } else if (windowVenner == 'dwustronna') {
+                } else if (windowVenner == 'two-sided') {
                     const winVennerPrice = (Math.round((winSizePrice * 0.44) * 100) / 100) + winProfilePrice;
                     this.$store.commit('setWinVennerPrice', winVennerPrice);
                 } else {
                     return 0;
                 }
-                if(winType == 'Drzwi HS') {
-                    this.$store.commit('setWinGlass', 'dwukomorowe');
+                if(winType == 'Door HS') {
+                    this.$store.commit('setWinGlass', 'two-chamber');
                     this.$store.commit('setWinVenner', windowVenner);
                     this.$router.push('/windowFrames');                    
                 } else {
@@ -102,7 +100,7 @@
                 const winWidth = store.state.width;
                 const winHeight = store.state.height;
                 const winType = store.state.winType;
-                    next(winType !=='' && winType !== 'Drzwi jednoskrzydłowe 1' && winType !== 'Drzwi jednoskrzydłowe 2' && winType !== 'Drzwi dwuskrzydłowe PVC' && winHeight !=='' && winWidth !== '');
+                    next(winType !=='' && winType !== 'Single-leaf door PVC 1' && winType !== 'Single-leaf door PVC 2' && winType !== 'Double-leaf door PVC' && winHeight !=='' && winWidth !== '');
             }
     }
 
@@ -124,6 +122,9 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.vennerItem {
+    margin: 5px;
 }
   [type=radio] { 
   position: absolute;
@@ -155,12 +156,14 @@ label p {
     padding: 10px 50px;
     display: inline-block;
     margin-left: 20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin-right: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -196,11 +199,13 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:0 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:0 0 20px 20px;              
+        margin:0 0 20px 20px;  
+        width: 120px;            
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

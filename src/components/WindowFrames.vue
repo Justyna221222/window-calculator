@@ -1,62 +1,61 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj ciepłej ramki lub wybierz opcję okna bez ciepłej ramki</p>
+        <p>Enter a frame type or select a window without a frame</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
     <div class="header">
-        <p > Wprowadź kolor ciepłej ramki.</p>
+        <p > Enter the color of the frame.</p>
     </div>
-    <div class="frame brakRamki">
+    <div class= "brakRamki">
         <label class="noFrame">
-            <input type="radio" id="brak" value="brak" v-model="windowFrame">
-            <p>Wybieram okno bez ciepłej ramki</p>
+            <input type="radio" id="brak" value="empty" v-model="windowFrame">
+            <p>Window without frame. </p>
         </label>   
     </div> 
     <div class="choose">
     <div class="frame">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="czarna" value="czarna" v-model="windowFrame">
+            <input type="radio" id="czarna" value="black" v-model="windowFrame">
             <img src='/images/ramkaCzarna.png' alt="window frame" width="49" height="286">
-            <p>Czarna</p>
+            <p>Black</p>
         </label>   
     </div>
     <div class="frame">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="szara" value="szara" v-model="windowFrame">
+            <input type="radio" id="szara" value="gray" v-model="windowFrame">
             <img src='/images/ramkaSzara.png' alt="window frame" width="49" height="286">
-            <p>Szara</p>
+            <p>Gray</p>
         </label>   
     </div>
     <div class="frame">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="ciemnyBraz" value="ciemny brąz" v-model="windowFrame">
+            <input type="radio" id="ciemnyBraz" value="dark brown" v-model="windowFrame">
             <img src='/images/ramkaCiemnyBraz.png' alt="window frame" width="49" height="286">
-            <p>Ciemny brąz</p>
+            <p>Dark brown</p>
         </label>   
     </div>
     <div class="frame">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="jasnyBraz" value="jasny brąz" v-model="windowFrame">
+            <input type="radio" id="jasnyBraz" value="light brown" v-model="windowFrame">
             <img src='/images/ramkaJasnyBraz.png' alt="window frame" width="49" height="286">
-            <p>Jasny brąz</p>
+            <p>Light brown</p>
         </label>   
     </div>
     <div class="frame">
         <label class="shadow p-3 mb-5 bg-white rounded">
-            <input type="radio" id="biala" value="biała" v-model="windowFrame">
+            <input type="radio" id="biala" value="white" v-model="windowFrame">
             <img src='/images/ramkaBiala.png' alt="window frame" width="49" height="286">
-            <p>Biała</p>
+            <p>White</p>
         </label>   
     </div>   
 </div>
-<div>Cena okna po określeniu typu szyby: {{ this.$store.state.winGlassPrice }}</div>
 <div>
-    <button @click="navigateToWinGlass" type="button" class="previous">Poprzedni</button>
-    <button @click="setFrames" type="button" class="next">Następny</button>
+    <button @click="navigateToWinGlass" type="button" class="previous">Previous</button>
+    <button @click="setFrames" type="button" class="next">Next</button>
 </div>
 </template>
 
@@ -86,21 +85,21 @@
                 if(winFrames == ''){
                     this.inputIsInvalid = true;
                     return;
-                } else if(winType == 'Drzwi HS' && winGlass == 'jednokomorowe') {
+                } else if(winType == 'Door HS' && winGlass == 'single-chamber') {
                     const winGlassPrice = this.$store.state.winVennerPrice;
                     const winFramesPrice = winFramesPriceSingle(area, winFrames, winGlassPrice);
                     this.$store.commit('setWinFramePrice', winFramesPrice);
                     this.winFramesPrice = winFramesPrice;
-                } else if(winType == 'Drzwi HS' && winGlass == 'dwukomorowe') {
+                } else if(winType == 'Door HS' && winGlass == 'two-chamber') {
                     const winGlassPrice = this.$store.state.winVennerPrice;
                     const winFramesPrice = winFramesPriceDouble(area, winFrames, winGlassPrice);
                     this.$store.commit('setWinFramePrice', winFramesPrice);
                     this.winFramesPrice = winFramesPrice;
-                } else if(winGlass == 'jednokomorowe') {
+                } else if(winGlass == 'single-chamber') {
                     const winFramesPrice = winFramesPriceSingle(area, winFrames, winGlassPrice);
                     this.$store.commit('setWinFramePrice', winFramesPrice);
                     this.winFramesPrice = winFramesPrice;                  
-                } else if(winGlass == 'dwukomorowe') {
+                } else if(winGlass == 'two-chamber') {
                     const winFramesPrice = winFramesPriceDouble(area, winFrames, winGlassPrice);
                     this.$store.commit('setWinFramePrice', winFramesPrice);
                     this.winFramesPrice = winFramesPrice;
@@ -121,7 +120,7 @@
                 const winGlass = store.state.winGlass;
                 const winType = store.state.winType;
                 var letIn;
-                if(winGlass == '' && winType == 'Drzwi HS') {
+                if(winGlass == '' && winType == 'Door HS') {
                     letIn = true;
                 } else if(winGlass == '') {
                     letIn = false;
@@ -158,6 +157,15 @@ p {
     justify-content: center;
     align-items: center;
 }
+.frame {
+    margin: 5px;
+}
+.frame label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
   [type=radio]:not(#brak) { 
   position: absolute;
   opacity: 0;
@@ -186,12 +194,14 @@ p {
     padding: 10px 50px;
     display: inline-block;
     margin-left: 20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin-right: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -230,11 +240,14 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:0 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:0 0 20px 20px;              
+        margin:0 0 20px 20px;
+        width: 120px;
+
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

@@ -3,79 +3,77 @@
     <table class="table table-striped">
         <tbody>
         <tr class="highlighted">
-            <th>Element okna</th>
-            <th>Wybrano</th>
+            <th>Window's item</th>
+            <th>Selected</th>
         </tr>  
         <tr>
-            <td>Typ</td>
+            <td>Type</td>
             <td>{{ this.$store.state.winType }}</td>
         </tr>  
         <tr>
-            <td>Rozmiar</td>
+            <td>Size</td>
             <td>{{ this.$store.state.width }} x {{this.$store.state.height }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Profil</td>
+            <td>Profile</td>
             <td>{{ this.$store.state.winProfile }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Okleina</td>
+            <td>Veneer</td>
             <td>{{ this.$store.state.winVenner }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Szyba</td>
+            <td>Glass</td>
             <td>{{ this.$store.state.winGlass }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Ciepłe ramki</td>
+            <td>Frames</td>
             <td>{{ this.$store.state.winFrame }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Szprosy</td>
+            <td>Muntins</td>
             <td>{{ this.$store.state.winMuntins }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Nawiewniki</td>
+            <td>Diffusers</td>
             <td>{{ this.$store.state.winDiffuser }}</td>
         </tr>
         <tr v-if="isVisible">
-            <td>Roleta</td>
+            <td>Blinds</td>
             <td>{{ this.$store.state.winBlind }}</td>
-        </tr>
-        <tr>
-            <td>Podsumowanie</td>
-            <td>{{ this.$store.state.winBlindPrice }}</td>
         </tr>
         </tbody>
     </table>
     <div>
-        <p class="big">Gratulujemy! Cena Twojego okna jest już obliczona. Jeżeli chcesz ją poznać, wyślemy Ci wiadomość na Twój adres e-mail z obliczonymi specjalnymi RABATAMI !</p> 
-        <p class="small">To nie jest zapis na newsletter. Nie będziemy przysyłać Ci żadnych seryjnych wiadomości.</p>      
+        <p class="big">Congratulations! The price of your window is already calculated. If you want to know them, we will send you a message to your e-mail address</p> 
+        <p class="small">There is no subscription to the newsletter. We will not send you any future messages.</p>      
     </div>
-
+<form @submit.prevent="sendEmail">
 <div>
     <p>E-mail</p>
-    <input id='yourName' type='email' v-model='yourEmail' @blur="validateEmail">
-    <p v-if="invalidEmail" class="warning">Wprowadź adres e-mail</p>     
+    <input id='yourName' type='email' v-model='yourEmail'>
+    <p v-if="invalidEmail" class="warning">Insert your e-mail address</p>  
+    <div>
+        <input type="submit" value="Send windows price">
+    </div>   
 </div >
-<div class="buttons">
-    <div>
-        <button @click="sendEmail">Wyślij cenę okna</button>
-    </div>
-    <div>
-        <button @click="addItem">Dodaj kolejną pozycję</button>
-    </div>
-    <div>
-        <button @click="fromBeginning">Oblicz od początku</button>
-    </div>
-</div>
-<div>{{this.$store.state.Windows}}</div>
 <div v-if="emailSend" class="emailSend">
-    <p>Wiadomość została wysłana, dziękujemy!</p>
+    <p>The message has been sent. Thank you!</p>
 </div>
 <div v-if="errSend">
-    <p>Coś poszło nie tak, spróbuj jeszcze raz!</p>
+    <p>Something went wrong, please try again!</p>
 </div>
+</form>
+<div class="buttons">
+    <div>
+        <button @click="addItem">Add another item</button>
+    </div>
+    <div>
+        <button @click="fromBeginning">Calculate from the beginning</button>
+    </div>
+</div>
+
+
 </div>
 </template>
 <script>
@@ -95,7 +93,7 @@ export default {
     computed: {
         isVisible() {
             const winType = this.$store.state.winType;
-            if(winType == 'Drzwi jednoskrzydłowe 1' || winType == 'Drzwi jednoskrzydłowe 2' || winType == 'Drzwi dwuskrzydłowe PVC') {
+            if(winType == 'Single-leaf door PVC 1' || winType == 'Single-leaf door PVC 2' || winType == 'Double-leaf door PVC') {
                 return false;
             } else {
                 return true;
@@ -105,17 +103,17 @@ export default {
     methods: {
         addItem() {
             const window = {
-                typ: this.$store.state.winType,
-                szerokość: this.$store.state.width,
-                wysokość: this.$store.state.height,
-                profil: this.$store.state.winProfile,
-                okleina: this.$store.state.winVenner,
-                szyby: this.$store.state.winGlass,
-                ramki: this.$store.state.winFrame,
-                szprosy: this.$store.state.winMuntins,
-                nawiewniki: this.$store.state.winDiffuser,
-                rolety: this.$store.state.winBlind,
-                cena: this.$store.state.winBlindPrice,
+                Type: this.$store.state.winType,
+                Width: this.$store.state.width,
+                Height: this.$store.state.height,
+                Profile: this.$store.state.winProfile,
+                Venner: this.$store.state.winVenner,
+                Glass: this.$store.state.winGlass,
+                Frames: this.$store.state.winFrame,
+                Muntins: this.$store.state.winMuntins,
+                Diffusers: this.$store.state.winDiffuser,
+                Blinds: this.$store.state.winBlind,
+                Price: this.$store.state.winBlindPrice,
             }
             console.log(window);
             console.log(window.typ);
@@ -148,17 +146,17 @@ export default {
         sendEmail() {
 
             const window = {
-                typ: this.$store.state.winType,
-                szerokość: this.$store.state.width,
-                wysokość: this.$store.state.height,
-                profil: this.$store.state.winProfile,
-                okleina: this.$store.state.winVenner,
-                szyby: this.$store.state.winGlass,
-                ramki: this.$store.state.winFrame,
-                szprosy: this.$store.state.winMuntins,
-                nawiewniki: this.$store.state.winDiffuser,
-                rolety: this.$store.state.winBlind,
-                cena: this.$store.state.winBlindPrice,
+                Type: this.$store.state.winType,
+                Width: this.$store.state.width,
+                Height: this.$store.state.height,
+                Profile: this.$store.state.winProfile,
+                Venner: this.$store.state.winVenner,
+                Glass: this.$store.state.winGlass,
+                Frames: this.$store.state.winFrame,
+                Muntins: this.$store.state.winMuntins,
+                Diffusers: this.$store.state.winDiffuser,
+                Blinds: this.$store.state.winBlind,
+                Price: this.$store.state.winBlindPrice,
             }
 
             this.$store.commit('addNewWindow', window);
@@ -179,6 +177,7 @@ export default {
               }
               
                 this.mojeOkna = parsed;
+                console.log(this.mojeOkna);
 
 
         }
@@ -263,7 +262,7 @@ setTimeout(() => {
                 const winBlind = store.state.winBlind;
                 const winType = store.state.winType;
                 var letIn;
-                if(winBlind == '' && winType == 'Drzwi jednoskrzydłowe 1' || winType == 'Drzwi jednoskrzydłowe 2' || winType == 'Drzwi dwuskrzydłowe PVC') {
+                if(winBlind == '' && winType == 'Single-leaf door PVC 1' || winType == 'Single-leaf door PVC 2' || winType == 'Double-leaf door PVC') {
                     letIn = true;
                 } else if(winBlind == '') {
                     letIn = false;
@@ -303,6 +302,7 @@ table {
     color: green;
     font-size: 18px;
     font-weight: bold;
+    margin-top: 20px;
 }
 input {
     margin: 0 0 20px 0;
@@ -312,7 +312,7 @@ input {
     flex-direction: row;
     justify-content: space-between;
     padding: 0;
-    margin: 0;
+    margin: 30px 0;
 }
 button {
   padding: 0.75rem 1.5rem;
@@ -322,6 +322,19 @@ button {
   border: 1px solid #3a0061;
   color: white;
   cursor: pointer;
+}
+input[type=submit] {
+  padding: 0.75rem 1.5rem;
+  width: 300px;
+  font-family: inherit;
+  background-color:darkgreen;
+  border: 2px solid #3a0061;
+  color: white;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+background-color:green;
+border: 2px solid white;
 }
 
 button:hover,
@@ -363,6 +376,9 @@ button:active {
         color: white;
         cursor: pointer;
         }
+    input[type=submit] {
+        width: 100%;
+    }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {
     .header {
@@ -395,6 +411,9 @@ button:active {
         color: white;
         cursor: pointer;
         }
+    input[type=submit] {
+        width: 100%;
+    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
 

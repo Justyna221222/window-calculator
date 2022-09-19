@@ -1,39 +1,39 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj szprosy lub wybierz opcję okna bez ciepłej szprosy</p>
+        <p>Enter the type of muntin or select the window without muntin</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
     <div class="header">
-        <p> Wprowadź rodzaj i kolor szprosy.</p>
+        <p> Enter the type and color of the muntin.</p>
     </div>
     <div class="choose">
         <div class="narrow">
             <div class="brak">
                 <label class="noFrame">
-                 <input type="radio" id="brak" value="brak" v-model="windowMuntins">
-                 <p>Wybieram okno bez naklejanych szpros</p>    
+                 <input type="radio" id="brak" value="empty" v-model="windowMuntins">
+                 <p>Window without muntins.</p>    
                 </label>   
             </div>  
         </div>
         <hr>
         <div class='narrow'>
-            <div><p>Szerokość szprosy: <b>26 mm</b></p></div>
+            <div><p>Muntin's width: <b>26 mm</b></p></div>
             <div class="chooseItems">
                 <div class="frame">
                     <label class="muntinItem">
-                        <input type="radio" id="biala26" value="biała 26mm" v-model="windowMuntins">
-                        <p>Biała</p>
+                        <input type="radio" id="biala26" value="white 26mm" v-model="windowMuntins">
+                        <p>White</p>
                     <!--  <img src='/images/szprosaBiala.png' alt="window frame" width="54" height="54">-->
                     </label>          
                 </div>  
                 <div class="frame">
                     <label class="muntinItem">
-                        <input type="radio" id="drewnopodobna26" value="drewnopodobna 26mm" v-model="windowMuntins">
-                        <p>Drewnopodobna</p>
+                        <input type="radio" id="drewnopodobna26" value="in the color of wood 26mm" v-model="windowMuntins">
+                        <p>In the color of wood</p>
                     <!--  <img src='/images/szprosaDrewnopodobna.png' alt="window frame" width="51" height="51">-->
                     </label>      
                 </div>  
@@ -41,20 +41,20 @@
         </div>
         <hr> 
         <div class='narrow'>
-            <div><p>Szerokość szprosy: <b>45 mm</b></p></div>
+            <div><p>Muntin's width: <b>45 mm</b></p></div>
             <div class="chooseItems">
                 <div class="frame">
                     <label class="muntinItem">
-                        <input type="radio" id="biala45" value="biała 45mm" v-model="windowMuntins">
-                        <p>Biała</p> 
+                        <input type="radio" id="biala45" value="white 45mm" v-model="windowMuntins">
+                        <p>White</p> 
                         <!--<img src='/images/szprosaBiala.png' alt="window frame" width="54" height="54"> -->   
                     </label> 
                     
                 </div>  
                 <div class="frame">
                     <label class="muntinItem">
-                        <input type="radio" id="drewnopodobna45" value="drewnopodobna 45mm" v-model="windowMuntins">
-                        <p>Drewnopodobna</p>
+                        <input type="radio" id="drewnopodobna45" value="in the color of wood 45mm" v-model="windowMuntins">
+                        <p>In the color of wood</p>
                         <!-- <img src='/images/szprosaDrewnopodobna.png' alt="window frame" width="51" height="51">-->
                     </label> 
                       
@@ -63,10 +63,9 @@
         </div>  
         <hr> 
 </div>
-<div>Cena okna po wybraniu ciepłych ramek: {{this.$store.state.winFramePrice}}</div>
 <div>
-    <button @click="navigateToWinFrames" type="button" class="previous">Poprzedni</button>
-    <button @click="setMuntins" type="button" class="next">Następny</button>
+    <button @click="navigateToWinFrames" type="button" class="previous">Previous</button>
+    <button @click="setMuntins" type="button" class="next">Next</button>
 </div>
 </template>
 
@@ -95,10 +94,10 @@
                 if(winMuntins == ''){
                     this.inputIsInvalid = true;
                     return;
-                } else if (winGlass == 'jednokomorowe') {
+                } else if (winGlass == 'single-chamber') {
                     const winMuntinPrice = winMuntinsPriceSingle(winMuntins, winType, winWidth, winHeight, winFramesPrice);
                     this.winMuntinsPrice = winMuntinPrice;
-                } else if(winGlass == 'dwukomorowe') {
+                } else if(winGlass == 'two-chamber') {
                     const winMuntinPrice = winMuntinsPriceDouble(winMuntins, winType, winWidth, winHeight, winFramesPrice);
                     this.winMuntinsPrice = winMuntinPrice;
                 } else {
@@ -207,12 +206,14 @@ input {
     padding: 10px 50px;
     display: inline-block;
     margin-left: 20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin-right: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -237,6 +238,9 @@ button:active {
   border-color: #270041;
 }
 @media only screen and (min-width: 0px) and (max-width: 576px) {
+    * {
+        font-size: 17px;
+    }
     .header {
         margin: 20px 0 20px;
     }
@@ -244,11 +248,13 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:0 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:0 0 20px 20px;              
+        margin:0 0 20px 20px; 
+        width: 120px;             
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

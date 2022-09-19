@@ -1,7 +1,7 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź wysokość i szerokość okna w mm</p>
+        <p>Enter the height and width of the window in millimeters</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
@@ -9,8 +9,8 @@
 </error-message>
 <error-message v-if="incorrectSize" @close="confrimErrorSize">
     <template #default>
-        <p>Wygląda na to, że nie oferujemy okna o podanych wymiarach.</p>
-        <p>Jeżeli potrzebujesz nietypowego okna skontaktuj się z nami:</p>
+        <p>It looks like we don't offer a window with this size.</p>
+        <p>If you need an unusual window, please contact us:</p>
         <p>e:mail: WK@windowscork.ie</p>
         <p>Phone: 087 467 4850</p>
     </template>
@@ -20,27 +20,26 @@
 </error-message>
  <div class="container">
     <div class="header">
-        <p> Wprowadź wysokość i szerokość okna w mm.</p>
+        <p> Enter the height and width of the window in millimeters</p>
     </div>
     <div class="winImgInputs">
         <div :class="{invalid:widthValidity === 'invalid'}" class="WinWidth">
             <label to='winWidth'>Width</label>
             <input type='text' id='winWidth' v-model.trim="winWidth" @blur="validateWidth" size='10'>
-            <p v-if="widthValidity === 'invalid'">Wprowadź szerokość okna w mm</p>
+            <p v-if="widthValidity === 'invalid'">Enter the window width in millimeters</p>
         </div>
      <div class="imgAndHeight">
         <img :src='source' alt="window">
         <div :class="{invalid:heightValidity === 'invalid'}">        
             <label to='winHeight'>Height</label>
             <input type='text' id='winHeight' v-model.trim="winHeight" @blur="validateHeight" size='10'>
-            <p v-if="heightValidity === 'invalid'">Wprowadź wysokość okna w mm</p>      
+            <p v-if="heightValidity === 'invalid'">Enter the window height in millimeters</p>      
         </div>
     </div>
     </div>
-    <div>Cena okna: {{ winSizePrice }}</div>
     <div class='nextAndPrevious'>
-        <button @click="navigateToWinType" type="button" class="previous">Poprzedni</button>
-        <button @click="setWinSize" type="button" class="next">Następny</button>
+        <button @click="navigateToWinType" type="button" class="previous">Previous</button>
+        <button @click="setWinSize" type="button" class="next">Next</button>
     </div>  
 </div> 
 </template>
@@ -81,55 +80,55 @@
             const wWidth = this.winWidth;
             const wHeight = this.winHeight;
             const winType = this.$store.state.winType;
-            if(winType == 'fix w ramie') {
+            if(winType == 'Fixed in the frame') {
                  const winPrice = winSizePriceF(wWidth, wHeight);
                 return winPrice;
-            } else if(winType == 'rozwierne'){
+            } else if(winType == 'Side-hung'){
                 const winPrice = winSizePriceR(wWidth, wHeight);
                 return winPrice;
-            } else if(winType == 'Rozwierne + rozwierno-uchylne'){
+            } else if(winType == 'Side-hung + tilt&turn'){
                 const winPrice = winSizePriceRRU(wWidth, wHeight);
                 return winPrice;
-            } else if(winType == 'Rozwierno-uchylne + FIX'){
+            } else if(winType == 'Tilt&turn + FIX'){
                 const winPrice = winSizePriceRUF(wWidth, wHeight);
                 return winPrice;
-            } else if(winType == 'Uchylne'){
+            } else if(winType == 'Tilt'){
                 const winPrice = winSizePriceU(wWidth, wHeight);
                 return winPrice;                                
-            } else if(winType == 'Rozwierno-uchylne'){
+            } else if(winType == 'Tilt&turn'){
                 const winPrice = winSizePriceRU(wWidth, wHeight);
                 return winPrice;  
-            } else if(winType == 'Uchylne + rozwierno-uchylne'){
+            } else if(winType == 'Tilt + tilt&turn'){
                 const winPrice = winPriceURU(wWidth, wHeight);
                 return winPrice;  
-            } else if(winType == 'Rozwierne + rozwierno-uchylne x 2'){
+            } else if(winType == 'Side-hung + tilt&turn x 2'){
                 const winPrice = winPriceRRUX2(wWidth, wHeight);
                 return winPrice; 
-            } else if(winType == 'Rozwierne + rozwierne + rozwierno-uchylne'){
+            } else if(winType == 'Side-hung + Side-hung + tilt&turn'){
                 const winPrice = winSizePriceRRRU(wWidth, wHeight);
                 return winPrice;   
-            } else if(winType == 'Stałe FIX + FIX'){
+            } else if(winType == 'FIX + FIX'){
                 const winPrice = winSizePriceFF(wWidth, wHeight);
                 return winPrice;   
-            } else if(winType == 'Stałe FIX + FIX + FIX'){
+            } else if(winType == 'FIX + FIX + FIX'){
                 const winPrice = winSizePriceFFF(wWidth, wHeight);
                 return winPrice;   
-            } else if(winType == 'Drzwi PSK + FIX'){
+            } else if(winType == 'Door PSK + FIX'){
                 const winPrice = winPriceDPSKF(wWidth, wHeight);
                 return winPrice;     
-            } else if(winType == 'Drzwi PSK + FIX Perfectherm'){
+            } else if(winType == 'Door PSK + FIX Perfectherm'){
                 const winPrice = winPriceDPSKFPerfectherm(wWidth, wHeight);
                 return winPrice;   
-            } else if(winType == 'Drzwi HS'){
+            } else if(winType == 'Door HS'){
                 const winPrice = winPriceHS(wWidth, wHeight);
                 return winPrice;    
-            } else if(winType == 'Drzwi jednoskrzydłowe 1'){
+            } else if(winType == 'Single-leaf door PVC 1'){
                 const winPrice = winPriceDsingle(wWidth, wHeight);
                 return winPrice; 
-            } else if(winType == 'Drzwi jednoskrzydłowe 2'){
+            } else if(winType == 'Single-leaf door PVC 2'){
                 const winPrice = winPriceDsingle1(wWidth, wHeight);
                 return winPrice;
-            } else if(winType == 'Drzwi dwuskrzydłowe PVC'){
+            } else if(winType == 'Double-leaf door PVC'){
                 const winPrice = winPriceDdoublePVC(wWidth, wHeight);
                 return winPrice;                                              
             }  else {
@@ -139,39 +138,39 @@
             },
         source() {
             const winType = this.$store.state.winType;
-            if(winType == 'fix w ramie') {
+            if(winType == 'Fixed in the frame') {
                 return '/images/WinSize/FIXwRamie1.png';
-            } else if(winType == 'rozwierne'){
+            } else if(winType == 'Side-hung'){
                 return '/images/WinSize/rozwierne1.png';
-            } else if(winType == 'Rozwierne + rozwierno-uchylne'){
+            } else if(winType == 'Side-hung + tilt&turn'){
                 return '/images/WinSize/rozwierne+rozwierno-uchylne1.png';
-            } else if(winType == 'Rozwierno-uchylne + FIX'){
+            } else if(winType == 'Tilt&turn + FIX'){
                 return '/images/WinSize/rozwierno-uchylne+FIX1.png';
-            } else if(winType == 'Uchylne'){
+            } else if(winType == 'Tilt'){
                 return '/images/WinSize/uchylne1.png';                                
-            } else if(winType == 'Rozwierno-uchylne'){
+            } else if(winType == 'Tilt&turn'){
                 return '/images/WinSize/rozwierno-uchylne1.png';  
-            } else if(winType == 'Rozwierne + rozwierne + rozwierno-uchylne'){
+            } else if(winType == 'Side-hung + Side-hung + tilt&turn'){
                 return '/images/WinSize/rozwierne+rozwierne+rozwierno-uchylne1.png';   
-            } else if(winType == 'Stałe FIX + FIX'){
+            } else if(winType == 'FIX + FIX'){
                 return '/images/WinSize/staleFIX+FIX1.png';   
-            } else if(winType == 'Stałe FIX + FIX + FIX'){
+            } else if(winType == 'FIX + FIX + FIX'){
                 return '/images/WinSize/stałeFIX+FIX+FIX1.png';
-            } else if(winType == 'Drzwi PSK + FIX'){
+            } else if(winType == 'Door PSK + FIX'){
                 return '/images/WinSize/DPSK+FIX.png';    
-            } else if(winType == 'Drzwi PSK + FIX Perfectherm'){
+            } else if(winType == 'Door PSK + FIX Perfectherm'){
                 return '/images/WinSize/DPSK+FIX.png';   
-            } else if(winType == 'Drzwi HS'){
+            } else if(winType == 'Door HS'){
                 return '/images/WinSize/HS+FIX.png';  
-            } else if(winType == 'Drzwi jednoskrzydłowe 1'){
+            } else if(winType == 'Single-leaf door PVC 1'){
                 return '/images/WinSize/DrzwiJednoPVC1.png';   
-            } else if(winType == 'Drzwi jednoskrzydłowe 2'){
+            } else if(winType == 'Single-leaf door PVC 2'){
                 return '/images/WinSize/DrzwiJednoPVC2.png';   
-            } else if(winType == 'Drzwi dwuskrzydłowe PVC'){
+            } else if(winType == 'Double-leaf door PVC'){
                 return '/images/WinSize/DrzwiDwuPVC.png';  
-            } else if(winType == 'Uchylne + rozwierno-uchylne'){
+            } else if(winType == 'Tilt + tilt&turn'){
                 return '/images/WinSize/uchylne+rozwierno-uchylne.png';   
-            } else if(winType == 'Rozwierne + rozwierno-uchylne x 2'){
+            } else if(winType == 'Side-hung + tilt&turn x 2'){
                 return '/images/WinSize/rozwierne+rozwierno-uchylneX2.png';                                                  
             }  else {
                 return 0;
@@ -197,9 +196,9 @@
                 this.$store.commit('setHeight', windowHeight);
                 this.$store.commit('setWinSizePrice', winSizePrice);
                 this.$store.commit('setWinArea', winArea);
-                if(winType == 'Drzwi PSK + FIX' || winType == 'Drzwi PSK + FIX Perfectherm' || winType == 'Drzwi HS') {
+                if(winType == 'Door PSK + FIX' || winType == 'Door PSK + FIX Perfectherm' || winType == 'Door HS') {
                     this.$router.push("/windowVenner")
-                } else if(winType == 'Drzwi jednoskrzydłowe 1' || winType == 'Drzwi jednoskrzydłowe 2' || winType == 'Drzwi dwuskrzydłowe PVC') {
+                } else if(winType == 'Single-leaf door PVC 1' || winType == 'Single-leaf door PVC 2' || winType == 'Double-leaf door PVC') {
                     this.$store.commit('setWinBlindPrice', winSizePrice);
                     this.$store.commit('setBasketDisabled');  
                     this.$router.push("/summary")
@@ -263,10 +262,12 @@ label {
 .next {
     padding: 10px 50px;
     margin-right: 100px;
+    width: 200px;
 }
 .previous {
     padding: 10px 50px;
     margin-left: 20px;
+    width: 200px;
 }
 .header {
     font-size: 20px;
@@ -290,6 +291,7 @@ div.invalid label {
 img {
     width: "434px";
     height: "295px";
+    margin: 20px 0 40px 0;
 }
 button {
   padding: 0.75rem 1.5rem;
@@ -335,13 +337,25 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin-right: 20px;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
-        font-size: 14px;                
+        font-size: 14px; 
+        width: 120px;               
     }
-
-
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .next {
+        width: 200px;
+    }
+    .previous {
+        width: 200px;
+    }
+    .header p{
+        width: 100vw;
+        background-color: #f3e0d1;
+    }
 }
 
 </style>

@@ -3,51 +3,51 @@
     <table class="table table-striped">
         <tbody>
         <tr class="highlighted">
-            <th>Element okna</th>
-            <th>Wybrano</th>
+            <th>Window's item</th>
+            <th>Selected</th>
         </tr>  
         <tr>
-            <td>Typ</td>
+            <td>Type</td>
             <td>{{ this.$store.state.winType }}</td>
         </tr>  
         <tr>
-            <td>Szerokość</td>
+            <td>Width</td>
             <td>{{ this.$store.state.width }}</td>
         </tr>
         <tr>
-            <td>Wysokość</td>
+            <td>Height</td>
             <td>{{ this.$store.state.height }}</td>
         </tr>
         <tr>
-            <td>Profil</td>
+            <td>Profile</td>
             <td>{{ this.$store.state.winProfile }}</td>
         </tr>
         <tr>
-            <td>Okleina</td>
+            <td>Veneer</td>
             <td>{{ this.$store.state.winVenner }}</td>
         </tr>
         <tr>
-            <td>Szyba</td>
+            <td>Glass</td>
             <td>{{ this.$store.state.winGlass }}</td>
         </tr>
         <tr>
-            <td>Ciepłe ramki</td>
+            <td>Frames</td>
             <td>{{ this.$store.state.winFrame }}</td>
         </tr>
         <tr>
-            <td>Szprosy</td>
+            <td>Muntins</td>
             <td>{{ this.$store.state.winMuntins }}</td>
         </tr>
         <tr>
-            <td>Nawiewniki</td>
+            <td>Diffusers</td>
             <td>{{ this.$store.state.winDiffuser }}</td>
         </tr>
         <tr>
-            <td>Roleta</td>
+            <td>Blinds</td>
             <td>{{ this.$store.state.winBlind }}</td>
         </tr>
         <tr>
-            <td>Podsumowanie</td>
+            <td>Summary</td>
             <td>{{ this.$store.state.winBlindPrice }}</td>
         </tr>
         </tbody>

@@ -1,21 +1,21 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wprowadź rodzaj rolety lub wybierz opcję okna bez rolety</p>
+        <p>Enter the type of roller shutter or select the window without roller shutter</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
     <div class="header">
-        <p> Wprowadź rodzaj rolety lub wybierz okno bez rolety.</p>
+        <p>Enter the type of roller shutter or select the window without roller shutter </p>
     </div>
     <div class="choose">
         <div class="narrow">
             <div class="brak">
                 <div class="noBlind">
-                 <input type="radio" id="brak" value="brak" name ="winBlind" v-model="windowBlind">
-                 <label for="brak">Wybieram okno bez rolety.</label>    
+                 <input type="radio" id="brak" value="empty" name ="winBlind" v-model="windowBlind">
+                 <label for="brak">Window without a roller shutter.</label>    
                 </div>   
             </div>  
         </div>
@@ -23,31 +23,30 @@
             <div class="chooseItems">
                     <div class="blindItem">
                         <div class="narrow">
-                            <input type="radio" id="reczna" value="ręczna" name ="winBlind" v-model="windowBlind">
-                            <label for="reczna">Roleta ręczna</label>
+                            <input type="radio" id="reczna" value="manual" name ="winBlind" v-model="windowBlind">
+                            <label for="reczna">Manual roller blind</label>
                         </div>
                         <img src='/images/roletazewnetrzna.png' alt="roleta ręczna" width="138" height="250">
                     </div>          
                     <div class="blindItem">
                         <div class="narrow">                        
-                            <input type="radio" id="zsilnikiem" value="z silnikiem" name ="winBlind" v-model="windowBlind">
-                            <label for="zsilnikiem">Roleta z silnikiem</label>
+                            <input type="radio" id="zsilnikiem" value="motorized" name ="winBlind" v-model="windowBlind">
+                            <label for="zsilnikiem">Motorized roller blind</label>
                         </div>
                         <img src='/images/roletaSilnik1.png' alt="window blind" width="184" height="250">
                     </div>      
                     <div class="blindItem">
                         <div class="narrow">                        
-                            <input type="radio" id="zsilnikiemzprzeciazeniem" value="z silnikiem z przeciążeniem" name ="winBlind" v-model="windowBlind">
-                            <label for="zsilnikiemzprzeciazeniem">Roleta z silnikiem z przeciążeniem</label>
+                            <input type="radio" id="zsilnikiemzprzeciazeniem" value="overload motor" name ="winBlind" v-model="windowBlind">
+                            <label for="zsilnikiemzprzeciazeniem">Roller shutter with an overload motor</label>
                         </div>
                         <img src='/images/roletaSilnik2.png' alt="window blind" width="157" height="250">
                     </div>      
             </div>
 </div>
-<div>Cena okna po wybraniu nawiewników: {{this.$store.state.winDiffuserPrice}}</div>
 <div>
-    <button @click="navigateToWinDiffusers" type="button" class="previous">Poprzedni</button>
-    <button @click="setBlind" type="button" class="next">Następny</button>
+    <button @click="navigateToWinDiffusers" type="button" class="previous">Previous</button>
+    <button @click="setBlind" type="button" class="next">Next</button>
 </div>
 </template>
 
@@ -69,13 +68,13 @@
                 if(winBlind == ''){
                     this.inputIsInvalid = true;
                     return;
-                } else if (winBlind == 'brak') {
+                } else if (winBlind == 'empty') {
                     winBlindPrice = Math.round(winDiffuserPrice);
-                } else if(winBlind == 'ręczna') {
+                } else if(winBlind == 'manual') {
                     winBlindPrice = Math.round(winDiffuserPrice + (winArea * 300));
-                } else if(winBlind == 'z silnikiem') {
+                } else if(winBlind == 'motorized') {
                     winBlindPrice = Math.round(winDiffuserPrice + (winArea * 300) + 210);
-                } else if(winBlind == 'z silnikiem z przeciążeniem') {
+                } else if(winBlind == 'overload motor') {
                     winBlindPrice = Math.round(winDiffuserPrice + (winArea * 300) + 340);
                 } else {
                     return 0;
@@ -141,6 +140,7 @@ p {
      display: flex;
      flex-direction: column;
      justify-content: center;
+     margin-bottom: 50px;
  }
  .chooseItems {
      display: flex;
@@ -178,12 +178,15 @@ input {
     padding: 10px 50px;
     display: inline-block;
     margin:20px;
+    width: 200px;
 }
 .next {
     float: right;
     padding: 10px 50px;
     display: inline-block;
     margin: 20px;
+    width: 200px;
+    
 }
 .header {
     font-size: 20px;
@@ -227,11 +230,13 @@ button:active {
         padding: 5px 20px;
         font-size: 14px;
         margin:20px 20px 20px 0;
+        width: 120px;
     }
     .previous {
         padding: 5px 20px;
         font-size: 14px;  
-        margin:20px 0 20px 20px;              
+        margin:20px 0 20px 20px; 
+        width: 120px;             
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768px) {

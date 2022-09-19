@@ -1,34 +1,34 @@
 <template>
     <div class="buttons">
         <div class="buttonFrame">
-            <router-link to="/windowType" type="button" class="button">Typ</router-link>
+            <router-link to="/windowType" type="button" class="button">Type</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowSize" type="button" class="button">Rozmiar</router-link>
+            <router-link to="/windowSize" type="button" class="button">Size</router-link>
         </div>
         <div class="buttonFrame">
             <router-link to="/windowProfile" type="button" class="button">Profile</router-link>
         </div>        
         <div class="buttonFrame">
-            <router-link to="/windowVenner" type="button" class="button">Okleina</router-link>
+            <router-link to="/windowVenner" type="button" class="button">Veneer</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowGlass" type="button" class="button">Szyba</router-link>
+            <router-link to="/windowGlass" type="button" class="button">Glass</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowFrames" type="button" class="button">Ciepłe ramki</router-link>
+            <router-link to="/windowFrames" type="button" class="button">Frames</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowMuntins" type="button" class="button">Szprosy</router-link>
+            <router-link to="/windowMuntins" type="button" class="button">Muntins</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowDiffusers" type="button" class="button">Nawiewniki</router-link>
+            <router-link to="/windowDiffusers" type="button" class="button">Diffusers</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/windowBlind" type="button" class="button">Roleta</router-link>
+            <router-link to="/windowBlind" type="button" class="button">Blinds</router-link>
         </div>
         <div class="buttonFrame">
-            <router-link to="/summary" type="button" class="button">Podsumowanie</router-link>
+            <router-link to="/summary" type="button" class="button">Summary</router-link>
         </div>
 
     </div>

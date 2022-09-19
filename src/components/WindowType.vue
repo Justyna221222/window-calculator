@@ -1,173 +1,174 @@
 <template>
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
-        <p>Wybierz typ okna lub drzwi</p>
+        <p>Select the type of window or door</p>
     </template>
     <template #actions>
         <button @click="confrimError">Ok</button>
     </template>
 </error-message>
-<div><p class="header">Wprowadź typ okna lub drzwi</p></div>
-<div><p class="header1">OKNA</p></div>
+<div><p class="header">Select the type of window or door</p></div>
+<div><p class="header1">WINDOWS</p></div>
 
     <div class="choose"> 
         <div class="listItem">
-            <div class="description">Stałe FIX w ramie</div>
+            <div class="description">Fixed in the frame</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='fixWRamie'>  
-                <input type="radio" id="fixWRamie" value="fix w ramie" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/FIXwRamie.png' alt="Fix w ramie" width="96" height="170">
+                <input type="radio" id="fixWRamie" value="Fixed in the frame" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/FIXwRamie.png' alt="Fixed in the frame" width="96" height="170">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Rozwierne</div>
+            <div class="description">Side-hung</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozwierne'>   
-                <input type="radio" id="Rozwierne" value="rozwierne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierne.png' alt="Rozwierne" width="92" height="170">
+                <input type="radio" id="Rozwierne" value="Side-hung" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierne.png' alt="Side-hung" width="92" height="170">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Rozwierne + rozwierno-uchylne</div>
+            <div class="description">Side-hung + tilt&turn</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozwierne + rozwierno-uchylne'>  
-                <input type="radio" id="Rozwierne + rozwierno-uchylne" value="Rozwierne + rozwierno-uchylne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierne+rozwierno-uchylne.png' alt="Rozwierne + rozwierno-uchylne" width="173" height="170">
+                <input type="radio" id="Rozwierne + rozwierno-uchylne" value="Side-hung + tilt&turn" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierne+rozwierno-uchylne.png' alt="Side-hung + tilt&turn" width="173" height="170">
             </label>   
         </div>    
         <div class="listItem">
-            <div class="description">Rozwierno-uchylne + FIX</div>
+            <div class="description">Tilt&turn + FIX</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozweirno-uchylne + FIX'>  
-                <input type="radio" id="Rozweirno-uchylne + FIX" value="Rozwierno-uchylne + FIX" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierno-uchylne+FIX.png' alt="Rozweirno-uchylne + FIX" width="171" height="170">
+                <input type="radio" id="Rozweirno-uchylne + FIX" value="Tilt&turn + FIX" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierno-uchylne+FIX.png' alt="Tilt&turn + FIX" width="171" height="170">
             </label>   
         </div> 
         <div class="listItem">
-            <div class="description">Uchylne</div>
+            <div class="description">Tilt</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Uchylne'>  
-                <input type="radio" id="Uchylne" value="Uchylne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/uchylne.png' alt="Uchylne" width="170" height="88">
+                <input type="radio" id="Uchylne" value="Tilt" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/uchylne.png' alt="Tilt" width="170" height="88">
             </label>   
         </div>       
         <div class="listItem">
-            <div class="description">Rozwierno-uchylne</div>
+            <div class="description">Tilt&turn</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozwierno-uchylne'>  
-                <input type="radio" id="Rozwierno-uchylne" value="Rozwierno-uchylne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierno-uchylne.png' alt="Rozwierno-uchylne" width="92" height="170">
+                <input type="radio" id="Rozwierno-uchylne" value="Tilt&turn" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierno-uchylne.png' alt="Tilt&turn" width="92" height="170">
             </label>   
         </div>  
         <div class="listItem">
-            <div class="description">Uchylne + rozwierno-uchylne</div>
+            <div class="description">Tilt + tilt&turn</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Uchylne + rozwierno-uchylne'>  
-                <input type="radio" id="Uchylne + rozwierno-uchylne" value="Uchylne + rozwierno-uchylne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/uchylne+rozwierno-uchylne.png' alt="Uchylne + rozwierno-uchylne" width="118" height="170">
+                <input type="radio" id="Uchylne + rozwierno-uchylne" value="Tilt + tilt&turn" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/uchylne+rozwierno-uchylne.png' alt="Tilt + tilt&turn" width="118" height="170">
             </label>   
         </div>
             <div class="listItem">
-            <div class="description">Rozwierne + rozwierno-uchylne x 2</div>
+            <div class="description">Side-hung + tilt&turn x 2</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozwierne + rozwierno-uchylne x 2'>  
-                <input type="radio" id="Rozwierne + rozwierno-uchylne x 2" value="Rozwierne + rozwierno-uchylne x 2" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierne+rozwierno-uchylneX2.png' alt="Uchylne + rozwierno-uchylne" width="116" height="170">
+                <input type="radio" id="Rozwierne + rozwierno-uchylne x 2" value="Side-hung + tilt&turn x 2" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierne+rozwierno-uchylneX2.png' alt="Side-hung + tilt&turn x 2" width="116" height="170">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Rozwierne + rozwierne + rozwierno-uchylne</div>
+            <div class="description">Side-hung + Side-hung + tilt&turn</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Rozwierne + rozwierne + rozwierno-uchylne'>  
-                <input type="radio" id="Rozwierne + rozwierne + rozwierno-uchylne" value="Rozwierne + rozwierne + rozwierno-uchylne" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/rozwierne+rozwierne+rozwierno-uchylne.png' alt="Rozwierne + rozwierne + rozwierno-uchylne" width="250" height="170">
+                <input type="radio" id="Rozwierne + rozwierne + rozwierno-uchylne" value="Side-hung + Side-hung + tilt&turn" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/rozwierne+rozwierne+rozwierno-uchylne.png' alt="Side-hung + Side-hung + tilt&turn" width="250" height="170">
             </label>   
         </div>  
         <div class="listItem">
-            <div class="description">Stałe FIX + FIX</div>
+            <div class="description">FIX + FIX</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Stałe FIX + FIX'>  
-                <input type="radio" id="Stałe FIX + FIX" value="Stałe FIX + FIX" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/staleFIX+FIX.png' alt="Stałe FIX + FIX" width="171" height="170">
+                <input type="radio" id="Stałe FIX + FIX" value="FIX + FIX" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/staleFIX+FIX.png' alt="FIX + FIX" width="171" height="170">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Stałe FIX + FIX + FIX</div>
+            <div class="description">FIX + FIX + FIX</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Stałe FIX + FIX + FIX'>  
-                <input type="radio" id="Stałe FIX + FIX + FIX" value="Stałe FIX + FIX + FIX" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/stałeFIX+FIX+FIX.png' alt="Stałe FIX + FIX + FIX" width="248" height="170">
+                <input type="radio" id="Stałe FIX + FIX + FIX" value="FIX + FIX + FIX" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/stałeFIX+FIX+FIX.png' alt="FIX + FIX + FIX" width="248" height="170">
             </label>   
         </div>
     </div>
-<div><p class="header1">DRZWI</p></div>
+<div><p class="header1">DOORS</p></div>
     <div class="choose">
         <div class="listItem">
-            <div class="description">Drzwi PSK + FIX</div>
+            <div class="description">Door PSK + FIX</div>
             <div class="description1">ClassicTherm</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi PSK + FIX'>  
-                <input type="radio" id="Drzwi PSK + FIX" value="Drzwi PSK + FIX" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/DPSK+FIX.png' alt="Drzwi PSK + FIX" width="224" height="230">
+                <input type="radio" id="Drzwi PSK + FIX" value="Door PSK + FIX" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/DPSK+FIX.png' alt="Door PSK + FIX" width="224" height="230">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Drzwi PSK + FIX</div>
+            <div class="description">Door PSK + FIX</div>
             <div class="description1">Perfectherm</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi PSK + FIX Perfectherm'>  
-                <input type="radio" id="Drzwi PSK + FIX Perfectherm" value="Drzwi PSK + FIX Perfectherm" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/DPSK+FIX.png' alt="Drzwi PSK + FIX Perfectherm" width="224" height="230">
+                <input type="radio" id="Drzwi PSK + FIX Perfectherm" value="Door PSK + FIX Perfectherm" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/DPSK+FIX.png' alt="Door PSK + FIX Perfectherm" width="224" height="230">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Drzwi HS</div>
+            <div class="description">Door HS</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi HS'>  
-                <input type="radio" id="Drzwi HS" value="Drzwi HS" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/HS+FIX.png' alt="Drzwi HS" width="224" height="230">
+                <input type="radio" id="Drzwi HS" value="Door HS" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/HS+FIX.png' alt="Door HS" width="224" height="230">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Drzwi jednoskrzydłowe PVC</div>
+            <div class="description">Single-leaf door PVC</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi jednoskrzydłowe 1'>  
-                <input type="radio" id="Drzwi jednoskrzydłowe 1" value="Drzwi jednoskrzydłowe 1" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/DrzwiJednoPVC1.png' alt="Drzwi jednoskrzydłowe PVC" width="115" height="230">
+                <input type="radio" id="Drzwi jednoskrzydłowe 1" value="Single-leaf door PVC 1" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/DrzwiJednoPVC1.png' alt="Single-leaf door PVC 1" width="115" height="230">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Drzwi jednoskrzydłowe PVC</div>
+            <div class="description">Single-leaf door PVC</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi jednoskrzydłowe 2'>  
-                <input type="radio" id="Drzwi jednoskrzydłowe 2" value="Drzwi jednoskrzydłowe 2" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/DrzwiJednoPVC2.png' alt="Drzwi HS" width="113" height="230">
+                <input type="radio" id="Drzwi jednoskrzydłowe 2" value="Single-leaf door PVC 2" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/DrzwiJednoPVC2.png' alt="Single-leaf door PVC 2" width="113" height="230">
             </label>   
         </div>
         <div class="listItem">
-            <div class="description">Drzwi dwuskrzydłowe PVC</div>
+            <div class="description">Double-leaf door PVC</div>
             <label class="shadow p-3 mb-5 bg-white rounded" for='Drzwi dwuskrzydłowe PVC'>  
-                <input type="radio" id="Drzwi dwuskrzydłowe PVC" value="Drzwi dwuskrzydłowe PVC" v-model="windowType" @input="setWinType1($event)">
-                <img src='/images1/DrzwiDwuPVC.png' alt="Drzwi HS" width="155" height="230">
+                <input type="radio" id="Drzwi dwuskrzydłowe PVC" value="Double-leaf door PVC" v-model="windowType" @input="setWinType1($event)">
+                <img src='/images1/DrzwiDwuPVC.png' alt="Double-leaf door PVC" width="155" height="230">
             </label>   
         </div>
     </div>
     <div class="nextButtonFrame">
-        <button @click="setWinType" type="button" class="next">Następny</button>
+        <button @click="setWinType" type="button" class="next">Next</button>
     </div> 
     <div class="woodenWindows">
-       <h4> Powyższy kalkulator oblicza cenę okna dla okien <strong>PCV</strong>. Jeżeli interesują cię okna <strong>drewniane</strong> lub inne, 
-           wypełnij poniższy formularz, a my wyślemy Ci cennik na Twój adres e-mail.</h4>
+       <h4> The above calculator calculates the <strong>PCV</strong> window price . If you are interested in <strong>wooden</strong> windows or others, 
+        fill in the form below and we will send you the price list to your e-mail address.</h4>
 
-            <form>
-                <h5>Interesują mnie: </h5>
-                <input type="checkbox" id="oknaDrewniane" name="window" value="drewniane" v-model="windowPriceList" >
-                <label for="oknaDrewniane"> Okna drewniane</label><br>
-                <input type="checkbox" id="oknaAluminiowe" name="window" value="aluminiowe" v-model="windowPriceList">
-                <label for="oknaAluminiowe"> Okna aluminiowe</label><br>
-                <input type="checkbox" id="drewnianeZNakladkami" name="window" value="drewniane z nakładkami aluminiowymi" v-model="windowPriceList">
-                <label for="drewnianeZNakladkami"> Okna drewniane z nakładkami aluminiowymi</label><br>
-                <input type="checkbox" id="PPOZ" name="window" value="Stolarka PPOŻ Ei30 Ei60 Ei120" v-model="windowPriceList">
-                <label for="PPOZ"> Stolarka PPOŻ Ei30 Ei60 Ei120</label><br>
-            </form>
+            <form @submit.prevent="sendEmail">
+                <h5>I am interested in: </h5>
+                <input type="checkbox" id="oknaDrewniane" name="window1" value="Wooden windows" v-model="windowPriceList" >
+                <label for="oknaDrewniane"> Wooden windows</label><br>
+                <input type="checkbox" id="oknaAluminiowe" name="window2" value="Aluminum windows" v-model="windowPriceList">
+                <label for="oknaAluminiowe"> Aluminum windows</label><br>
+                <input type="checkbox" id="drewnianeZNakladkami" name="window3" value="Wooden windows with aluminum covers" v-model="windowPriceList">
+                <label for="drewnianeZNakladkami"> Wooden windows with aluminum covers</label><br>
+                <input type="checkbox" id="PPOZ" name="window4" value="Fire-fighting woodwork Ei30 Ei60 Ei120" v-model="windowPriceList">
+                <label for="PPOZ"> Fire-fighting woodwork Ei30 Ei60 Ei120</label><br>
+            
             <div class="email">
-                <p>Twój adres e-mail</p>
-                <input type="email" v-model="yourEmail">
+                <p>Your e-mail address:</p>
+               <input for="email" type="email" v-model="yourEmail" required >
             </div>
-            <p class="small">To nie jest zapis na newsletter. Nie będziemy przysyłać Ci żadnych seryjnych wiadomości.</p>    
+            <p class="small">There is no subscription to the newsletter. We will not send you any future messages.</p>    
             <div>
-                <button class="buttonSendEmail" @click="sendEmail">Wyślij cennik</button>
+                <button class="buttonSendEmail">Send a price list</button>
             </div>
             <div v-if="emailSend" class="emailSend">
-                <p>Wiadomość została wysłana, dziękujemy!</p>
+                <p>The message has been sent. Thank you!</p>
             </div>
             <div v-if="errSend">
-                <p>Coś poszło nie tak, spróbuj jeszcze raz!</p>
+                <p>Something went wrong, please try again!</p>
             </div>
+            </form>
     </div>
 </template>
 
@@ -181,7 +182,8 @@ import emailjs from '@emailjs/browser';
             windowPriceList: [],
             yourEmail: '',
             emailSend: false,
-            errSend: false
+            errSend: false,
+            msg: ''
          };
      },
      methods: {
@@ -207,7 +209,7 @@ import emailjs from '@emailjs/browser';
             const templateParams = {
             window: this.windowPriceList,
             email: this.yourEmail
-            };
+            };            
             emailjs.send('service_u5bo6u3','template_q47tvk5', templateParams, 'Bk9OW_oJI8NKfrxhJ')
             .then((response) => {
             this.emailSend = true;
@@ -216,6 +218,35 @@ import emailjs from '@emailjs/browser';
             this.errSend = true;
             console.log('FAILED...', err);
             });
+            setTimeout(() => {
+            this.$router.push("/windowType");            
+            this.$store.state.winType = '',
+            this.$store.state.width = '',
+            this.$store.state.height = '',
+            this.$store.state.winSizePrice = '',            
+            this.$store.state.winArea = '',
+            this.$store.state.winProfile = '',
+            this.$store.state.winProfilePrice = '',
+            this.$store.state.winVenner = '',
+            this.$store.state.winVennerPrice = '',
+            this.$store.state.winGlass = '',
+            this.$store.state.winGlassPrice = '',
+            this.$store.state.winFrame = '',
+            this.$store.state.winFramePrice = '',
+            this.$store.state.winMuntins = '',
+            this.$store.state.winMuntinsPrice = '',
+            this.$store.state.winDiffuser = '',
+            this.$store.state.winDiffuserPrice = '',
+            this.$store.state.winBlind = '',
+            this.$store.state.winBlindPrice = '',
+            this.$store.state.basketDisabled = false,
+            this.$store.state.Windows = [],
+            this.yourEmail = '',   
+            this.windowPriceList = '',
+            this.emailSend = false,
+            this.errSend = false
+            window.scrollTo(0, 0);
+}, 5000);
         },
      }
  }
@@ -386,6 +417,9 @@ form input {
     .next {
      padding: 10px 50px;
  }
+ button {
+    min-width: 200px;
+ }
  .nextButtonFrame {
     display: flex;
     justify-content: center;
@@ -414,7 +448,7 @@ form input {
     }  
     .next {
      padding: 10px 50px;
-    } 
+    }
      .nextButtonFrame {
     display: flex;
     justify-content: center;
