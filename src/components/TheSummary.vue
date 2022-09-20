@@ -144,6 +144,8 @@ export default {
             this.$router.push("/windowType");
         },
         sendEmail() {
+        let mail = this.yourEmail;
+        if(mail.includes("@")) {
 
             const window = {
                 Type: this.$store.state.winType,
@@ -222,7 +224,9 @@ setTimeout(() => {
             this.yourEmail = ''    
 }, 5000);
 
-
+       } else {
+            return;
+        }
             },
 
         validateEmail() {
