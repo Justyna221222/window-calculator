@@ -1,4 +1,15 @@
 <template>
+<error-message v-if="initialMessage" id="initialMessage" @click="confirmInitialMessage">
+    <template #default>
+        <p>The calculator calculates the price of a window or door based on real data, 
+            so if you enter the width and height of the window in millimeters, use the probable data.</p><br>
+        <p class="small">For example, for first window ("Fixed inf frame") it could be width: 800, height: 1200</p>
+    </template>
+    <template #actions>
+        <button @click="confirmInitialMessage">Ok</button>
+    </template>
+</error-message> 
+
 <error-message v-if="inputIsInvalid" @close="confrimError">
     <template #default>
         <p>Select the type of window or door</p>
@@ -179,6 +190,7 @@ import emailjs from '@emailjs/browser';
          return {
             windowType:'',
             inputIsInvalid: false,
+            initialMessage:true,
             windowPriceList: [],
             yourEmail: '',
             emailSend: false,
@@ -204,6 +216,9 @@ import emailjs from '@emailjs/browser';
          },
          confrimError() {
              this.inputIsInvalid = false;
+         },
+         confirmInitialMessage() {
+            this.initialMessage = false;
          },
         sendEmail() {
             const templateParams = {
